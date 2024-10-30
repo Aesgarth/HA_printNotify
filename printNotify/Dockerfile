@@ -4,13 +4,16 @@
 #RUN apk add --no-cache python3 py3-pip cups libcups
 FROM alpine:latest
 
-# Install Python, pip, and CUPS libraries
-RUN apk update 
+# Install Python, pip, and IPP libraries
+RUN apk update && \
+    apk add --no-cache python3 py3-pip && \
+    pip3 install pyipp
+
 #RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main libcups
-RUN apk add --no-cache  build-base gcc musl-dev python3-dev libc-dev
-RUN apk add --no-cache python3 
-RUN apk add --no-cache py3-pip 
-RUN apk add --no-cache cups 
+#RUN apk add --no-cache  build-base gcc musl-dev python3-dev libc-dev
+#RUN apk add --no-cache python3 
+#RUN apk add --no-cache py3-pip 
+#RUN apk add --no-cache cups 
 #RUN apk add --no-cache libcups
 
 # Install Python CUPS library
