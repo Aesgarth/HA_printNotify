@@ -6,9 +6,9 @@ FROM alpine:latest
 
 # Install Python, pip, and IPP libraries
 RUN apk update #&& \
-RUN apk add --no-cache python3 
-RUN apk add --no-cache py3-pip 
-RUN pip install pyipp
+RUN apk add --update python3 
+RUN apk add --update py3-pip 
+RUN pip3 install pyipp
 
 #RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main libcups
 #RUN apk add --no-cache  build-base gcc musl-dev python3-dev libc-dev
