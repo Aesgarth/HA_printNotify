@@ -6,10 +6,11 @@ FROM alpine:latest
 
 # Install Python, pip, and CUPS libraries
 RUN apk update 
-RUN apk add --no-cache python3 
-RUN apk add --no-cache py3-pip 
-RUN apk add --no-cache cups 
-RUN apk add --no-cache libcups
+RUN apk add --no-cache python3 py3-pip cups libcups build-base gcc
+#RUN apk add --no-cache python3 
+#RUN apk add --no-cache py3-pip 
+#RUN apk add --no-cache cups 
+#RUN apk add --no-cache libcups
 
 # Install Python CUPS library
 RUN pip3 install pycups
