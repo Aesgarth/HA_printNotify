@@ -14,7 +14,7 @@ RUN apk add --no-cache cups
 #RUN apk add --no-cache libcups
 
 # Install Python CUPS library
-RUN pip3 install pycups
+#RUN pip3 install pycups
 
 # Copy the add-on script into the container
 COPY notify_printer.py /notify_printer.py
