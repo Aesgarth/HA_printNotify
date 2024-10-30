@@ -1,7 +1,11 @@
-FROM alpine:3.13
+#FROM alpine:3.13
 
 # Install Python and CUPS
-RUN apk add --no-cache python3 py3-pip cups libcups
+#RUN apk add --no-cache python3 py3-pip cups libcups
+FROM alpine:latest
+
+# Install Python, pip, and CUPS libraries
+RUN apk update && apk add --no-cache python3 py3-pip cups libcups
 
 # Install Python CUPS library
 RUN pip3 install pycups
@@ -11,4 +15,3 @@ COPY notify_printer.py /notify_printer.py
 
 # Run the add-on
 CMD ["python3", "/notify_printer.py"]
-  
