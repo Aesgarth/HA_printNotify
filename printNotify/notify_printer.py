@@ -1,26 +1,34 @@
-import cups
 import sys
+from ipptools import IPP, JobTemplate
 
-def print_notification(printer_url, printer_name, message):
-    # Set up CUPS connection
-    conn = cups.Connection(printer_url)
-    
-    # Create a temporary text file with the message
-    with open("/tmp/notification.txt", "w") as f:
-        f.write(message)
+def print_notification(printer_url, message):
+    # Create an IPP connection to the printer
+    ipp = IPP(printer_url)
 
-    # Send the file to the printer
+    # Prepare the print job
+    job_template = JobTemplate(
+        name="Home Assistant Notification",
+        attributes={
+            'operation-attributes-tag': {
+                'requesting-user-name': 'Home Assistant',
+                'job-name': 'Notification Print',
+            },
+            'document-attributes-tag': {
+                'document-format': 'text/plain',
+            }
+        },
+    )
+
+    # Create the print job
     try:
-        conn.printFile(printer_name, "/tmp/notification.txt", "Home Assistant Notification", {})
+        ipp.print_job(job_template, message.encode('utf-8'))
         print("Notification sent to printer")
-    except cups.IPPError as e:
+    except Exception as e:
         print(f"Failed to send notification: {e}")
 
 if __name__ == "__main__":
     # Get arguments from run.sh
     printer_url = sys.argv[1]
-    printer_name = sys.argv[2]
-    message = sys.argv[3]
+    message = sys.argv[2]
 
-    print_notification(printer_url, printer_name, message)
-
+    print_notification(printer_url, message)
