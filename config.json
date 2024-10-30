@@ -1,5 +1,5 @@
 {
-  "name": "Printer Notification Add-On",
+  "name": "Printer Notification",
   "version": "1.0",
   "slug": "printer_notification",
   "description": "Sends notifications to a network printer.",
@@ -7,5 +7,9 @@
   "startup": "application",
   "boot": "auto",
   "ports": {},
-  "schema": {}
+  "schema": {
+    "printer_url": "str",
+    "printer_name": "str",
+    "message": "str"
+  }
 }
