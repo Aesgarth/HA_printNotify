@@ -1,0 +1,11 @@
+{
+  "name": "Printer Notification Add-On",
+  "version": "1.0",
+  "slug": "printer_notification",
+  "description": "Sends notifications to a network printer.",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "ports": {},
+  "schema": {}
+}
