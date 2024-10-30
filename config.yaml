@@ -1,0 +1,20 @@
+name: Printer Notification
+version: 1.0
+slug: printer_notification
+description: Sends notifications to a network printer.
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: application
+boot: auto
+options:
+  printer_url: "http://localhost:631"
+  printer_name: "Your_Printer_Name"
+  message: "This is a test message"
+schema:
+  printer_url: str
+  printer_name: str
+  message: str
