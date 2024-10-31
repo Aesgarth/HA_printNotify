@@ -1,5 +1,5 @@
 name: Printer Notification
-version: 1.0
+version: 0.1
 slug: printer_notification
 description: Sends notifications to a network printer.
 arch:
