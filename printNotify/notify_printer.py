@@ -1,29 +1,26 @@
 import sys
-from ipptools import IPP, JobTemplate
+import requests
 
 def print_notification(printer_url, message):
-    # Create an IPP connection to the printer
-    ipp = IPP(printer_url)
-
-    # Prepare the print job
-    job_template = JobTemplate(
-        name="Home Assistant Notification",
-        attributes={
-            'operation-attributes-tag': {
-                'requesting-user-name': 'Home Assistant',
-                'job-name': 'Notification Print',
-            },
-            'document-attributes-tag': {
-                'document-format': 'text/plain',
-            }
+    # IPP document and attributes
+    ipp_request = {
+        "operation-attributes-tag": {
+            "attributes-charset": "utf-8",
+            "attributes-natural-language": "en",
+            "printer-uri": printer_url,
+            "requesting-user-name": "Home Assistant",
+            "job-name": "Notification Print",
+            "document-format": "text/plain"
         },
-    )
+        "document": message
+    }
 
-    # Create the print job
     try:
-        ipp.print_job(job_template, message.encode('utf-8'))
+        # Send IPP job to printer using POST request
+        response = requests.post(printer_url, json=ipp_request)
+        response.raise_for_status()
         print("Notification sent to printer")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Failed to send notification: {e}")
 
 if __name__ == "__main__":
