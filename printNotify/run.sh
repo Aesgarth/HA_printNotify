@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 LOG_FILE="/data/debug.log"
 
