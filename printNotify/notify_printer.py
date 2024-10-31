@@ -29,7 +29,7 @@ def print_notification(printer_url, message):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Error: Missing arguments. Usage: python notify_printer.py <printer_url> <message>")
-        sys.exit(1)
+       # sys.exit(1)
 
     # Get command-line arguments
     printer_url = sys.argv[1]
