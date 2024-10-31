@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# Read configuration from options.json
+# Print the contents of options.json for debugging
+echo "Contents of /data/options.json:"
+cat /data/options.json
+
+# Pause to allow inspection
+sleep 30
+
+# Read configuration from options
 PRINTER_URL=$(jq --raw-output '.printer_url' /data/options.json)
 MESSAGE=$(jq --raw-output '.message' /data/options.json)
 
