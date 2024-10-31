@@ -1,17 +1,20 @@
 #!/bin/bash
 
-# Print the contents of options.json for debugging
+# Check if options.json exists
+if [ ! -f /data/options.json ]; then
+    echo "Error: /data/options.json not found."
+    exit 1
+fi
+
+# Print contents of options.json
 echo "Contents of /data/options.json:"
 cat /data/options.json
 
-# Pause to allow inspection
-sleep 30
-
-# Read configuration from options
+# Read configuration values
 PRINTER_URL=$(jq --raw-output '.printer_url' /data/options.json)
 MESSAGE=$(jq --raw-output '.message' /data/options.json)
 
-# Print the values for debugging
+# Debugging output
 echo "Printer URL: $PRINTER_URL"
 echo "Message: $MESSAGE"
 
