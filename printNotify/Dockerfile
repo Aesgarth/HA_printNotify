@@ -1,6 +1,7 @@
-#FROM alpine:3.13
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-FROM alpine:latest
 
 # Install Python, pip, and IPP libraries
 RUN apk update #&& \
