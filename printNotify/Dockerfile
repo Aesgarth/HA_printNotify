@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM
-FROM $BUILD_FROM
+#ARG BUILD_FROM
+FROM ghcr.io/home-assistant/amd64-base:3.15
 
 
 # Install Python, pip, and IPP libraries
