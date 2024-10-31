@@ -1,11 +1,9 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-#ARG BUILD_FROM
-FROM alpine:3.14 #ghcr.io/home-assistant/amd64-base:3.15
-
+FROM alpine:3.14 
 
 # Install Python, pip, and IPP libraries
 RUN apk update #&& \
-RUN apk add --update python3 py3-pip 
+RUN apk add --no-cache python3 py3-pip 
 
 # Install Python requests library
 #RUN pip3 install pycups
