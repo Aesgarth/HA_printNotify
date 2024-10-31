@@ -25,4 +25,4 @@ if [ -z "$PRINTER_URL" ] || [ -z "$MESSAGE" ]; then
 fi
 
 # Run the Python script
-python3 /notify_printer.py "$PRINTER_URL" "$MESSAGE"
+#python3 /notify_printer.py "$PRINTER_URL" "$MESSAGE"
