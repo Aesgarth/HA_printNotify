@@ -11,10 +11,8 @@ arch:
 startup: application
 boot: auto
 options:
-  printer_url: "http://localhost:631"
-  printer_name: "Your_Printer_Name"
+  printer_url: "ipp://192.168.0.71/ipp/print"
   message: "This is a test message"
 schema:
   printer_url: str
-  printer_name: str
   message: str
