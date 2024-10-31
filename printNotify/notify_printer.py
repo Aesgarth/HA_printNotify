@@ -2,6 +2,9 @@ import sys
 import requests
 
 def print_notification(printer_url, message):
+    print(f"Attempting to send notification to printer at {printer_url}")
+    print(f"Message: {message}")
+
     # IPP document and attributes
     ipp_request = {
         "operation-attributes-tag": {
@@ -19,7 +22,7 @@ def print_notification(printer_url, message):
         # Send IPP job to printer using POST request
         response = requests.post(printer_url, json=ipp_request)
         response.raise_for_status()
-        print("Notification sent to printer")
+        print("Notification successfully sent to printer")
     except requests.exceptions.RequestException as e:
         print(f"Failed to send notification: {e}")
 
@@ -28,4 +31,5 @@ if __name__ == "__main__":
     printer_url = sys.argv[1]
     message = sys.argv[2]
 
+    print("Starting print notification...")
     print_notification(printer_url, message)
