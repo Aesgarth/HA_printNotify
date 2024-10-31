@@ -9,6 +9,7 @@ RUN apk add --no-cache python3 py3-pip
 RUN pip3 install --upgrade pip
 
 # Install requests library
+FROM python:3.9-slim
 RUN pip3 install requests
 
 # Copy the add-on script into the container
