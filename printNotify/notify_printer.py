@@ -19,7 +19,7 @@ def print_notification(printer_url, message):
     }
 
     try:
-        # Send IPP job to printer using POST request
+        # Send IPP job to printer using a POST request
         response = requests.post(printer_url, json=ipp_request)
         response.raise_for_status()
         print("Notification successfully sent to printer")
@@ -27,9 +27,13 @@ def print_notification(printer_url, message):
         print(f"Failed to send notification: {e}")
 
 if __name__ == "__main__":
-    # Get arguments from run.sh
+    if len(sys.argv) < 3:
+        print("Error: Missing arguments. Usage: python notify_printer.py <printer_url> <message>")
+        sys.exit(1)
+
+    # Get command-line arguments
     printer_url = sys.argv[1]
     message = sys.argv[2]
 
-    print("Starting print notification...")
+    # Call function to print notification
     print_notification(printer_url, message)
