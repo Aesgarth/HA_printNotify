@@ -5,9 +5,10 @@ FROM alpine:3.14
 RUN apk update #&& \
 RUN apk add --no-cache python3 py3-pip 
 
-# Install Python requests library
-#RUN pip3 install pycups
-#RUN pip3 install pyipp
+# Ensure pip3 is upgraded to avoid compatibility issues
+RUN pip3 install --upgrade pip
+
+# Install requests library
 RUN pip3 install requests
 
 # Copy the add-on script into the container
