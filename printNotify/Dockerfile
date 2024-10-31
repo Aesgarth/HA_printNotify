@@ -6,7 +6,7 @@ RUN apk update #&& \
 RUN apk add --no-cache python3 py3-pip 
 
 # Ensure pip3 is upgraded to avoid compatibility issues
-RUN pip3 install --upgrade pip
+#RUN pip3 install --upgrade pip
 
 # Install requests library
 FROM python:3.9-slim
